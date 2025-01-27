@@ -1,11 +1,11 @@
 package com.itvedant.cms.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,12 +19,12 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Employee {
+public class Book {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int eno;
-	private String ename;
-	private double sal;
-
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+		private int bno;
+		private String bname;
+		private double price;
+		
 }

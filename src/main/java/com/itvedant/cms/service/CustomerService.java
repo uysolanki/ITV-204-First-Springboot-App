@@ -38,5 +38,11 @@ public class CustomerService {
 		
 		return null;
 	}
+	public List<Customer> getCustomersByEmail(String email) {
+		return customerRepository.findByCustEmailContaining(email);
+	}
+	public List<Customer> getCustomersByIdGreaterThan(int threshold) {
+		return customerRepository.itvFindById(threshold);
+	}
 
 }

@@ -41,6 +41,18 @@ public class CustomerController {
 		return customerService.getAllCustomers();
 	}
 	
+	@GetMapping("/getCustomersByEmail/{emailId}")
+	public List<Customer> getCustomersByEmail(@PathVariable("emailId") String email)
+	{
+		return customerService.getCustomersByEmail(email);
+	}
+	
+	@GetMapping("/getCustomersByIdGreaterThan/{threshold}")
+	public List<Customer> getCustomersByIdGreaterThan(@PathVariable("threshold") int threshold)
+	{
+		return customerService.getCustomersByIdGreaterThan(threshold);
+	}
+	
 	@GetMapping("/getCustomer/{custid}")
 	public Customer getCustomer(@PathVariable("custid") int custid)
 	{

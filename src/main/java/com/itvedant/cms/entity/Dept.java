@@ -2,10 +2,13 @@ package com.itvedant.cms.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +31,7 @@ public class Dept {
 	private String dname;
 	private String city;
 	
-	@OneToMany(mappedBy = "dno")
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "dno",referencedColumnName = "dno")
 	List<Employee> deptWorkers;
-	
 }
