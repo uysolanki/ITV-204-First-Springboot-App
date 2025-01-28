@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Welcome to ITV 204 Batch</h1>
+<h1 th:text="${c1.custId}"></h1>
+<h1 th:text="${c1.custName}"></h1>
+<h1 th:text="${c1.custEmail}"></h1>
+<h1 th:text="${c1.custMobile}"></h1>
 </body>
 </html>
