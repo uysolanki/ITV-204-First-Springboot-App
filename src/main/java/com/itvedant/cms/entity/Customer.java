@@ -31,4 +31,7 @@ public class Customer {
 	private String custEmail;
 	@Column(unique = true,name = "custmobile")
 	private String custMobile;
+	
+	
+	private String custGender;
 }

@@ -36,7 +36,7 @@ public class CustomerService {
 	}
 	public Customer addCustomer(Customer customer) {
 		
-		return null;
+		return customerRepository.save(customer);
 	}
 	public List<Customer> getCustomersByEmail(String email) {
 		return customerRepository.findByCustEmailContaining(email);
