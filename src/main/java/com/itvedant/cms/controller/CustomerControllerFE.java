@@ -16,7 +16,7 @@ import com.itvedant.cms.entity.Customer;
 import com.itvedant.cms.service.CustomerService;
 
 @Controller
-@RequestMapping("/cms/v1")
+//@RequestMapping("/cms/v1")
 public class CustomerControllerFE {
 	
 	@Autowired
@@ -43,14 +43,14 @@ public class CustomerControllerFE {
 	{
 		
 		customerService.addCustomer(itvcustomer);
-		return "redirect:/cms/v1/home";
+		return "redirect:/home";
 	}
 	
 	@RequestMapping("/deleteCustomer/{custid}")
 	public String deleteCustomer(@PathVariable("custid") int custid)
 	{
 		customerService.deleteCustomer(custid);
-		return "redirect:/cms/v1/home";
+		return "redirect:/home";
 	}
 	
 

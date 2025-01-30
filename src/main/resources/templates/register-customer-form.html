@@ -34,7 +34,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class="text-center"> Create New Customer </h1>
 				<div class="card-body">
-					<form th:action="@{/cms/v1/addCustomerByRequestBody}" th:object="${mycust}" method="POST">
+					<form th:action="@{/addCustomerByRequestBody}" th:object="${mycust}" method="POST">
 						<div class="form-group">
 							<label> Customer Name </label>
 							<input type="text" name="custName" th:field="*{custName}" class="form-control"
