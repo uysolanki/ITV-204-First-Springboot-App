@@ -34,8 +34,4 @@ public class DeptService {
 	public Dept getDept(int dno) {
 		return deptRepo.findById(dno).get();
 	}
-
-	
-
-	
 }
