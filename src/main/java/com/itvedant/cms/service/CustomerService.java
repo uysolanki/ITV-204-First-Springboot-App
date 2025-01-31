@@ -47,5 +47,16 @@ public class CustomerService {
 	public List<Customer> getCustomersByName(String searchString) {
 		return customerRepository.findByCustName(searchString);
 	}
+	public List<Customer> getAllCustomersByGender(String searchGender) {
+		return customerRepository.findByCustGender(searchGender);
+	}
+	
+	public List<String> getAllGenders()
+	{
+		return customerRepository.getAllGenders();
+	}
+	public List<Customer> getCustomersByNameAndGender(String searchName, String searchGender) {
+		return customerRepository.findByCustNameAndCustGender(searchName,searchGender);
+	}
 
 }

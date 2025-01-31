@@ -30,17 +30,41 @@ public class CustomerControllerFE {
 //		return "customer-list";
 //	}
 	
+//	@GetMapping("/home")
+//	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchString ,Model model)
+//	{
+//		List<Customer> customers;
+//		if(searchString.isEmpty())
+//		customers=customerService.getAllCustomers();
+//		else
+//		customers=customerService.getCustomersByName(searchString);
+//		
+//		model.addAttribute("customers",customers);
+//		model.addAttribute("searchCustomerName",searchString);
+//		return "customer-list";
+//	}
+	
 	@GetMapping("/home")
-	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchString ,Model model)
+	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchName ,
+			@RequestParam(name = "gender", required = false, defaultValue = "") String searchGender ,Model model)
 	{
 		List<Customer> customers;
-		if(searchString.isEmpty())
-		customers=customerService.getAllCustomers();
-		else
-		customers=customerService.getCustomersByName(searchString);
-		
+		if (searchName.isEmpty() && searchGender.isEmpty()) {
+	        customers = customerService.getAllCustomers();
+	    } else {
+	        // If only search by name
+	        if (!searchName.isEmpty() && !searchGender.isEmpty()) {
+	            customers = customerService.getCustomersByNameAndGender(searchName, searchGender);
+	        } else if (!searchName.isEmpty()) {
+	            customers = customerService.getCustomersByName(searchName);
+	        } else if (!searchGender.isEmpty()) {
+	            customers = customerService.getAllCustomersByGender(searchGender);
+	        } else {
+	            customers = customerService.getAllCustomers();
+	        }
+	    }
 		model.addAttribute("customers",customers);
-		model.addAttribute("searchCustomerName",searchString);
+		model.addAttribute("categories", customerService.getAllGenders()); 
 		return "customer-list";
 	}
 	

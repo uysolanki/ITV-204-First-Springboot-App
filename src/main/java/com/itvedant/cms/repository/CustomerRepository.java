@@ -20,4 +20,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>
 	public List<Customer> itvFindById(int x);
 	
 	public List<Customer> findByCustName(String z);
+	
+	
+	@Query(nativeQuery = true, value = "SELECT distinct cust_gender FROM customer")
+	public List<String> getAllGenders();
+
+	public List<Customer> findByCustGender(String searchGender);
+
+	public List<Customer> findByCustNameAndCustGender(String a,String b);
 }
