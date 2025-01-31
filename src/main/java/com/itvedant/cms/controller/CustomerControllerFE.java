@@ -53,5 +53,19 @@ public class CustomerControllerFE {
 		return "redirect:/home";
 	}
 	
+	@RequestMapping("/updateCustomerForm/{custid}")
+	public String updateCustomerForm(@PathVariable("custid") int custid,Model model)
+	{
+		Customer customer=customerService.getCustomer(custid);
+		model.addAttribute("customer",customer);
+		return "update-customer-form";
+	}
+	
+	@PostMapping("/updateCustomer/{id}")
+	public String updateCustomer(@PathVariable("id") int custid,@ModelAttribute Customer customer)
+	{
+		customerService.updateCustomer(custid, customer);
+		return "redirect:/home";
+	}
 
 }
