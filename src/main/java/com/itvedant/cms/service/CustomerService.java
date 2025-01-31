@@ -44,5 +44,8 @@ public class CustomerService {
 	public List<Customer> getCustomersByIdGreaterThan(int threshold) {
 		return customerRepository.itvFindById(threshold);
 	}
+	public List<Customer> getCustomersByName(String searchString) {
+		return customerRepository.findByCustName(searchString);
+	}
 
 }

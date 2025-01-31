@@ -19,5 +19,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>
 	@Query(nativeQuery = true, value = "SELECT * FROM customer where custid>=?1 order by custname desc")
 	public List<Customer> itvFindById(int x);
 	
-	
+	public List<Customer> findByCustName(String z);
 }

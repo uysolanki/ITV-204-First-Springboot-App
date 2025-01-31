@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itvedant.cms.entity.Customer;
 import com.itvedant.cms.service.CustomerService;
@@ -22,13 +22,28 @@ public class CustomerControllerFE {
 	@Autowired
 	CustomerService customerService;
 	
+//	@GetMapping("/home")
+//	public String displayAllCustomers(Model model)
+//	{
+//		List<Customer> customers=customerService.getAllCustomers();
+//		model.addAttribute("customers",customers);
+//		return "customer-list";
+//	}
+	
 	@GetMapping("/home")
-	public String displayAllCustomers(Model model)
+	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchString ,Model model)
 	{
-		List<Customer> customers=customerService.getAllCustomers();
+		List<Customer> customers;
+		if(searchString.isEmpty())
+		customers=customerService.getAllCustomers();
+		else
+		customers=customerService.getCustomersByName(searchString);
+		
 		model.addAttribute("customers",customers);
+		model.addAttribute("searchCustomerName",searchString);
 		return "customer-list";
 	}
+	
 	
 	@RequestMapping("/registerCustomer")
 	public String registerCustomer(Model model)
