@@ -1,5 +1,6 @@
 package com.itvedant.cms.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.itvedant.cms.entity.Customer;
 import com.itvedant.cms.service.CustomerService;
@@ -29,7 +31,7 @@ public class CustomerControllerFE {
 //		model.addAttribute("customers",customers);
 //		return "customer-list";
 //	}
-	
+//	
 //	@GetMapping("/home")
 //	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchString ,Model model)
 //	{
@@ -44,7 +46,7 @@ public class CustomerControllerFE {
 //		return "customer-list";
 //	}
 	
-	@GetMapping("/home")
+	@RequestMapping("/home")
 	public String displayAllCustomers(@RequestParam(name = "searchCustomerName", required = false, defaultValue = "") String searchName ,
 			@RequestParam(name = "gender", required = false, defaultValue = "") String searchGender ,Model model)
 	{
@@ -105,6 +107,24 @@ public class CustomerControllerFE {
 	{
 		customerService.updateCustomer(custid, customer);
 		return "redirect:/home";
+	}
+
+	@RequestMapping(value = "/403")
+	public ModelAndView accesssDenied(Principal user) {
+
+		ModelAndView model = new ModelAndView();
+
+		if (user != null) {
+			model.addObject("msg", "Hi " + user.getName() 
+			+ ", you do not have permission to access this page!");
+		} else {
+			model.addObject("msg", 
+			    "you do not have permission to access this page!");
+		}
+
+		model.setViewName("403");
+		return model;
+
 	}
 
 }

@@ -1,24 +1,24 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    url: jdbc:mysql://localhost:3306/itv204springdb
-    password: ''
-  application:
-    name: ITV204SpringBoot
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-  mvc:
-    view:
-      prefix: /templates/
-      suffix: .html
-server:
-  port: '8084'
-  servlet:
-    context-path: /cms/v1
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    url: jdbc:mysql://localhost:3306/itv204springdb
+#    password: ''
+#  application:
+#    name: ITV204SpringBoot
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .html
+#server:
+#  port: '8084'
+#  servlet:
+#    context-path: /cms/v1
